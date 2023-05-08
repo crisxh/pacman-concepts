@@ -16,6 +16,11 @@ class Boundary {
         this.height=200
         this.width=200
     }
+    draw(){
+        c.fillStyle='red';
+        c.fillRect(this.position.x,this.position.y,this.height,this.width);
+
+    }
 }
 
 
@@ -38,6 +43,6 @@ c.fillStyle='blue';
 c.fillRect(box.position.x,box.position.y,box.height,box.width);
 c.fillRect(100,100,100,100);
 
-
-
+box2=new Boundary({position:{x:300,y:300}})
+box2.draw();
 
