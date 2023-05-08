@@ -10,39 +10,57 @@ c=Canvas.getContext('2d');
 Canvas.width=window.innerWidth;
 Canvas.height=window.innerHeight;
 
+
+
 class Boundary {
-    constructor({position}){
+    constructor({position,color}){
         this.position=position
-        this.height=200
-        this.width=200
+        this.height=40
+        this.width=40
+        this.color=color || this.color;
     }
     draw(){
-        c.fillStyle='red';
+        c.fillStyle=this.color;
         c.fillRect(this.position.x,this.position.y,this.height,this.width);
 
     }
+    color='purple';
 }
 
+let boxes=[];
 
-function draw(b){
-    c.fillStyle='blue';
-    c.fillRect(b.position.x,b.position.y,b.height,b.width);
-    console.log( b)
-    console.log(b.position.x)
-    console.log('drawing...')
+function createBoxes(){
+    let boxPosX=400;
+    let boxPosY=10;
+    for(let i=0;i<=10;i++){
+        
+        boxes.push(new Boundary({position:{x:boxPosX,y:boxPosY}}));
+        boxPosY+=41;
+        
+
+    }
+    console.log(boxes)
 }
+createBoxes();
 
 let box= new Boundary({position:{
     x:250,
     y:250
 }})
 
-console.log(box)
 
-c.fillStyle='blue';
-c.fillRect(box.position.x,box.position.y,box.height,box.width);
-c.fillRect(100,100,100,100);
+
+
 
 box2=new Boundary({position:{x:300,y:300}})
 box2.draw();
 
+function drawBoxes(){
+    for(box of boxes){
+        console.log(box);
+        console.log(box.position.y);
+        box.draw();
+    }
+}
+
+drawBoxes();
