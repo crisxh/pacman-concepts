@@ -29,20 +29,29 @@ class Boundary {
 
 
 
-function createBoxes(startX,startY,color,number){
+function createBoxes(startX,startY,color,number,orientation){
     let boxPosX=startX;
     let boxPosY=startY;
     let boxes=[];
     for(let i=0;i<number;i++){
         
         boxes.push(new Boundary({position:{x:boxPosX,y:boxPosY},color:color}));
-        boxPosY+=40;
+        if(orientation==='v'){
+            boxPosY+=40;
+
+        }else if(orientation==='h'){
+            boxPosX+=40
+
+        }
+        
         
 
     }
     return boxes;
 }
-let leftBoxes= createBoxes(40,10,'grey',10);
+let leftBoxes= createBoxes(40,10,'grey',10,'v');
+let rightBoxes=createBoxes(400,10,'pink',10,'v');
+let topBoxes=createBoxes(40,10,'blue',10,'h')
 
 let box= new Boundary({position:{
     x:250,
@@ -57,11 +66,13 @@ box2=new Boundary({position:{x:300,y:300}})
 box2.draw();
 
 function drawBoxes(array){
-    for(box of leftBoxes){
+    for(box of array){
         console.log(box);
         console.log(box.position.y);
         box.draw();
     }
 }
 
-drawBoxes();
+drawBoxes(leftBoxes);
+drawBoxes(rightBoxes);
+drawBoxes(topBoxes);
