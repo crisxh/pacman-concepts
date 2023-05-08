@@ -27,21 +27,22 @@ class Boundary {
     color='purple';
 }
 
-let boxes=[];
 
-function createBoxes(){
-    let boxPosX=400;
-    let boxPosY=10;
-    for(let i=0;i<=10;i++){
+
+function createBoxes(startX,startY,color,number){
+    let boxPosX=startX;
+    let boxPosY=startY;
+    let boxes=[];
+    for(let i=0;i<number;i++){
         
-        boxes.push(new Boundary({position:{x:boxPosX,y:boxPosY}}));
-        boxPosY+=41;
+        boxes.push(new Boundary({position:{x:boxPosX,y:boxPosY},color:color}));
+        boxPosY+=40;
         
 
     }
-    console.log(boxes)
+    return boxes;
 }
-createBoxes();
+let leftBoxes= createBoxes(40,10,'grey',10);
 
 let box= new Boundary({position:{
     x:250,
@@ -55,8 +56,8 @@ let box= new Boundary({position:{
 box2=new Boundary({position:{x:300,y:300}})
 box2.draw();
 
-function drawBoxes(){
-    for(box of boxes){
+function drawBoxes(array){
+    for(box of leftBoxes){
         console.log(box);
         console.log(box.position.y);
         box.draw();
