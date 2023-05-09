@@ -52,6 +52,7 @@ function createBoxes(startX,startY,color,number,orientation){
 let leftBoxes= createBoxes(40,10,'grey',10,'v');
 let rightBoxes=createBoxes(400,10,'pink',10,'v');
 let topBoxes=createBoxes(40,10,'blue',10,'h')
+let bottomBoxes=createBoxes(40,400,'palegoldenrod',10,'h')
 
 let box= new Boundary({position:{
     x:250,
@@ -76,3 +77,4 @@ function drawBoxes(array){
 drawBoxes(leftBoxes);
 drawBoxes(rightBoxes);
 drawBoxes(topBoxes);
+drawBoxes(bottomBoxes)
