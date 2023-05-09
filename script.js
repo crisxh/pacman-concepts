@@ -26,53 +26,77 @@ class Boundary {
     }
     color='purple';
 }
+const boundaries=[]
+const map=[
+    ["-","-","-","-","-",],
+    ["-"," "," "," ","-",],
+    ["-"," ","-"," ","-",],
+    ["-"," "," "," ","-",],
+    ["-","-","-","-","-",],
+]
 
-
-
-function createBoxes(startX,startY,color,number,orientation){
-    let boxPosX=startX;
-    let boxPosY=startY;
-    let boxes=[];
-    for(let i=0;i<number;i++){
-        
-        boxes.push(new Boundary({position:{x:boxPosX,y:boxPosY},color:color}));
-        if(orientation==='v'){
-            boxPosY+=40;
-
-        }else if(orientation==='h'){
-            boxPosX+=40
-
+map.forEach((row,i)=>{
+    row.forEach((symbol,j)=>{
+        switch(symbol){
+            case "-":
+                boundaries.push(new Boundary({position:{x:40*j,y:40*i}}))
+                break
         }
+    })
+     })
+
+boundaries.forEach((boundary)=>{
+    boundary.draw();
+
+})
+
+
+
+
+// function createBoxes(startX,startY,color,number,orientation){
+//     let boxPosX=startX;
+//     let boxPosY=startY;
+//     let boxes=[];
+//     for(let i=0;i<number;i++){
+        
+//         boxes.push(new Boundary({position:{x:boxPosX,y:boxPosY},color:color}));
+//         if(orientation==='v'){
+//             boxPosY+=40;
+
+//         }else if(orientation==='h'){
+//             boxPosX+=40
+
+//         }
         
         
 
-    }
-    return boxes;
-}
-let leftBoxes= createBoxes(40,10,'grey',10,'v');
-let rightBoxes=createBoxes(400,10,'pink',10,'v');
-let topBoxes=createBoxes(40,10,'blue',10,'h')
+//     }
+//     return boxes;
+// }
+// let leftBoxes= createBoxes(40,10,'grey',10,'v');
+// let rightBoxes=createBoxes(400,10,'pink',10,'v');
+// let topBoxes=createBoxes(40,10,'blue',10,'h')
 
-let box= new Boundary({position:{
-    x:250,
-    y:250
-}})
-
-
+// let box= new Boundary({position:{
+//     x:250,
+//     y:250
+// }})
 
 
 
-box2=new Boundary({position:{x:300,y:300}})
-box2.draw();
 
-function drawBoxes(array){
-    for(box of array){
-        console.log(box);
-        console.log(box.position.y);
-        box.draw();
-    }
-}
 
-drawBoxes(leftBoxes);
-drawBoxes(rightBoxes);
-drawBoxes(topBoxes);
+// box2=new Boundary({position:{x:300,y:300}})
+// box2.draw();
+
+// function drawBoxes(array){
+//     for(box of array){
+//         console.log(box);
+//         console.log(box.position.y);
+//         box.draw();
+//     }
+// }
+
+// drawBoxes(leftBoxes);
+// drawBoxes(rightBoxes);
+// drawBoxes(topBoxes);
